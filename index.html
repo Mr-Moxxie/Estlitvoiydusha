@@ -1,116 +1,63 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Artful - The Fraud</title>
-    <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #050505;
-            overflow: hidden;
-            font-family: 'Courier New', Courier, monospace; /* Ретро-шрифт */
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Artful Style</title>
 
-        /* Мрачный театральный градиент (красный занавес во тьме) */
-        .stage-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 50% 40%, #3a0808 0%, #120202 50%, #000000 100%);
-            z-index: 1;
-        }
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-        /* Эффект старой пленки / глубокого мрака по краям */
-        .stage-background::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: radial-gradient(rgba(0,0,0,0) 30%, rgba(0,0,0,0.9) 100%);
-            box-shadow: inset 0 0 100px rgba(0,0,0,0.95);
-            z-index: 2;
-            pointer-events: none;
-        }
+body{
+    width:100vw;
+    height:100vh;
+    overflow:hidden;
 
-        /* Магические искры */
-        .particle {
-            position: absolute;
-            background-color: #ff3333;
-            width: 4px;
-            height: 4px;
-            border-radius: 50%;
-            box-shadow: 0 0 10px 3px rgba(255, 50, 50, 0.4);
-            animation: float-up infinite linear;
-            opacity: 0;
-            z-index: 2;
-        }
+    /* Темный градиент */
+    background:
+        radial-gradient(circle at top, rgba(180,0,0,.25), transparent 40%),
+        radial-gradient(circle at bottom, rgba(80,0,0,.35), transparent 55%),
+        linear-gradient(180deg,#080808,#120000,#050505);
 
-        /* Расположение и тайминги частиц */
-        .p1 { left: 15%; animation-duration: 6s; animation-delay: 0s; }
-        .p2 { left: 35%; animation-duration: 5s; animation-delay: 2s; }
-        .p3 { left: 55%; animation-duration: 7s; animation-delay: 1s; }
-        .p4 { left: 75%; animation-duration: 4s; animation-delay: 3s; }
-        .p5 { left: 90%; animation-duration: 8s; animation-delay: 0.5s; }
+    font-family:Arial,sans-serif;
+}
 
-        @keyframes float-up {
-            0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
-            20% { opacity: 0.7; }
-            80% { opacity: 0.5; }
-            100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
-        }
+/* Красное свечение */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+        repeating-linear-gradient(
+            90deg,
+            transparent 0px,
+            transparent 120px,
+            rgba(255,0,0,.02) 121px,
+            transparent 122px
+        );
+    animation:move 8s linear infinite;
+}
 
-        /* Временный контент поверх фона */
-        .content {
-            position: relative;
-            z-index: 3;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
-            color: #d4d4d4;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.9);
-            text-align: center;
-        }
+@keyframes move{
+    from{transform:translateX(0);}
+    to{transform:translateX(120px);}
+}
 
-        h1 {
-            font-size: 3.5rem;
-            letter-spacing: 4px;
-            margin: 0;
-            color: #9c1414;
-            text-transform: uppercase;
-            font-weight: bold;
-        }
+/* Легкая виньетка */
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    box-shadow: inset 0 0 250px black;
+}
+</style>
 
-        p {
-            font-size: 1.2rem;
-            opacity: 0.8;
-            margin-top: 10px;
-            letter-spacing: 2px;
-        }
-    </style>
 </head>
 <body>
-    <div class="stage-background">
-        <!-- Генерация искр -->
-        <div class="particle p1"></div>
-        <div class="particle p2"></div>
-        <div class="particle p3"></div>
-        <div class="particle p4"></div>
-        <div class="particle p5"></div>
-    </div>
-    
-    <div class="content">
-        <h1>Artful</h1>
-        <p>THE FRAUD</p>
-    </div>
+
 </body>
 </html>
